@@ -60,6 +60,10 @@ docker-compose up -d
 ### 2: Iniciar o Servidor (Backend)
 1.Abra o terminal na pasta server.
 
+ATENÇÃO: Crie um arquivo chamado .env na raiz da pasta server e adicione a URL do banco de dados (ajuste a senha se necessário):
+```bash
+DATABASE_URL="postgresql://admin:admin123@localhost:5435/fluxolog_db?schema=public"
+```
 2.Instale as dependências: npm install
 
 3.Sincronize o banco com o Prisma: npx prisma db push

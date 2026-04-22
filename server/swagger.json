@@ -1,0 +1,75 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API FluxoLog",
+    "version": "1.0.0",
+    "description": "Documentação completa da API de Gestão de Estoque do FluxoLog."
+  },
+  "servers": [
+    { "url": "http://localhost:3005", "description": "Servidor Local" }
+  ],
+  "paths": {
+    "/api/empresas": {
+      "post": {
+        "summary": "Cadastra uma nova empresa",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": { "nome_empresa": { "type": "string" }, "email": { "type": "string" }, "senha": { "type": "string" } }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Empresa criada com sucesso" } }
+      }
+    },
+    "/api/login": {
+      "post": {
+        "summary": "Faz o login da empresa",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": { "email": { "type": "string" }, "senha": { "type": "string" } }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Login realizado" }, "401": { "description": "Credenciais inválidas" } }
+      }
+    },
+    "/api/produtos": {
+      "post": {
+        "summary": "Cadastra um novo produto",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": { "nome": { "type": "string" }, "qtd": { "type": "integer" }, "preco": { "type": "number" }, "empresa_id": { "type": "integer" } }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Produto cadastrado" } }
+      }
+    },
+    "/api/produtos/{empresa_id}": {
+      "get": {
+        "summary": "Lista produtos de uma empresa",
+        "parameters": [ { "in": "path", "name": "empresa_id", "required": true, "schema": { "type": "integer" } } ],
+        "responses": { "200": { "description": "Lista retornada com sucesso" } }
+      }
+    },
+    "/api/estatisticas/{empresa_id}": {
+      "get": {
+        "summary": "Retorna o painel financeiro",
+        "parameters": [ { "in": "path", "name": "empresa_id", "required": true, "schema": { "type": "integer" } } ],
+        "responses": { "200": { "description": "Dados estatísticos retornados" } }
+      }
+    }
+  }
+}

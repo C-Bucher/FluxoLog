@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// --- NOSSAS TABELAS ---
+// --- TABELAS ---
 
 model Empresa {
   id           Int       @id @default(autoincrement())

@@ -26,6 +26,17 @@ export default function MenuPerfilDropdown({ empresa, onSwitchProfile, onLogout,
     } catch (erro) { alert("Erro ao conectar."); }
   };
 
+  // FUNÇÃO PARA REMOVER A CONTA
+  const handleRemoverConta = (emailParaRemover) => {
+    const salvas = JSON.parse(localStorage.getItem('fluxolog_contas_salvas')) || [];
+    const atualizadas = salvas.filter(c => c.email !== emailParaRemover);
+    
+    localStorage.setItem('fluxolog_contas_salvas', JSON.stringify(atualizadas));
+    setContas(atualizadas.filter(c => c.id !== empresa.id));
+    setContaAtivaParaSenha(null);
+    setSenha('');
+  };
+
   return (
     <div className="dropdown-perfil-card">
       <div className="dp-secao-ativa">
@@ -54,6 +65,23 @@ export default function MenuPerfilDropdown({ empresa, onSwitchProfile, onLogout,
                 <div className="dp-senha-inline">
                   <input type="password" placeholder="Senha..." value={senha} onChange={(e) => setSenha(e.target.value)} autoFocus />
                   <button onClick={() => handleTroca(c.email)}>Entrar</button>
+                  
+                  {/* BOTÃO DE REMOVER CONTA */}
+                  <button 
+                    onClick={() => handleRemoverConta(c.email)}
+                    style={{ 
+                      backgroundColor: '#dc3545', 
+                      color: 'white',
+                      border: 'none',
+                      padding: '5px 10px',
+                      borderRadius: '4px',
+                      marginLeft: '5px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Remover
+                  </button>
+
                 </div>
               )}
             </div>

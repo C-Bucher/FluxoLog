@@ -68,6 +68,7 @@ docker-compose up -d
 
 ATENÇÃO: Crie um arquivo chamado .env na raiz da pasta server e adicione a URL do banco de dados (ajuste a senha se necessário):
 ```bash
+Exemplo:
 DATABASE_URL="postgresql://admin:admin123@localhost:5435/fluxolog_db?schema=public"
 ```
 2.Instale as dependências: npm install

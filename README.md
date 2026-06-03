@@ -66,10 +66,10 @@ docker-compose up -d
 ### 2: Iniciar o Servidor (Backend)
 1.Abra o terminal na pasta server.
 
-ATENÇÃO: Crie um arquivo chamado .env na raiz da pasta server e adicione a URL do banco de dados (ajuste a senha se necessário):
+ATENÇÃO: Crie um arquivo chamado .env na raiz da pasta server e adicione a URL do banco de dados:
 ```bash
 Exemplo:
-DATABASE_URL="postgresql://admin:admin123@localhost:5435/fluxolog_db?schema=public"
+DATABASE_URL="postgresql://admin:admin123@localhost:5435/fluxolog?schema=public"
 ```
 2.Instale as dependências: npm install
 
